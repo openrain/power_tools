@@ -1,9 +1,9 @@
 # This suite of tasks generate graphical diagrams by introspecting the code base.
 # A UNIX-like environment is required as well as binaries from the following system packages in your PATH...
 # 
-# * The railroad gem.
-# * The graphviz package which includes the `dot` and `neato` command-line utilities.
-# * sed
+# * The railroad gem. (http://railroad.rubyforge.org)
+# * The graphviz package which includes the `dot` and `neato` command-line utilities. MacPorts users can install in via `sudo port install graphviz`.
+# * The `sed` command-line utility, which should already be available on all sane UNIX systems.
 #
 # Author: Preston Lee <preston.lee at openrain.com>
 
@@ -57,8 +57,7 @@ namespace :diagram do
 
   end
 
-
-  desc 'Generates all diagrams.'
+  desc 'Generates all SVG class diagrams.'
   task :all => ['diagram:models:complete', 'diagram:models:brief', 'diagram:controllers:complete', 'diagram:controllers:brief']
 
 end
