@@ -16,8 +16,8 @@ end
   
 namespace :diagram do
 
-  @MODELS_ALL_SVG = full_path('models_complete.svg')
-  @MODELS_BRIEF_SVG = full_path('models_brief.svg')
+  @MODELS_ALL_SVG = full_path('models_complete.svg').freeze
+  @MODELS_BRIEF_SVG = full_path('models_brief.svg').freeze
   @CONTROLLERS_ALL_SVG = full_path('controllers_complete.svg').freeze
   @CONTROLLERS_BRIEF_SVG = full_path('controllers_brief.svg').freeze
  
