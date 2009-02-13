@@ -22,7 +22,7 @@ Capistrano tasks for automating various Rails development activities
 Installation
 ------------
 
-  `./script/plugin install git://github.com/openrain/power_tools.git -r 'v1.0.0'`
+  `./script/plugin install git://github.com/openrain/power_tools.git -r 'tag v1.0.0'`
 
 Author
 ------
