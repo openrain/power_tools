@@ -4,7 +4,7 @@ OpenRain Power Tools
 A Work in Progress
 ------------------
 
-This Rails plugin contains several Rake and Capistrano tasks aimed at making deployment just a little bit easier
+This Rails plugin contains several Rake and Capistrano tasks aimed at making Rails deployment just a little bit easier
 
 Rake tasks for automating various Rails development activities.
 
@@ -22,7 +22,7 @@ Capistrano tasks for automating various Rails development activities
 Installation
 ------------
 
-  `./script/plugin install it://github.com/openrain/power_tools.git`
+  `./script/plugin install git://github.com/openrain/power_tools.git`
 
 Author
 ------
