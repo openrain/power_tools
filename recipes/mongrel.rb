@@ -1,16 +1,34 @@
 namespace :deploy do
 
-  desc "Start Mongrel cluster"
-  task :start, roles => :app do 
-    run "cd #{deploy_to}/current && mongrel_rails cluster::start -C #{mongrel_conf}"
+  # To use mongrel
+  # => set(:mongrel_conf) { "#{current_path}/config/mongrel_cluster.yml" } 
+  #
+  # To use modrails
+  # => set :passenger_conf, true
+
+  desc "Start app server"
+  task :start, roles => :app do
+    if fetch(:mongrel_conf, nil)
+      run "cd #{deploy_to}/current && mongrel_rails cluster::start -C #{mongrel_conf}"
+    elsif fetch(:passenger_conf, nil)
+      run "touch #{deploy_to}/current/tmp/restart.txt"
+    else
+      puts "No server configuration found, aborting deploy:start."
+    end
   end
 
-  desc "Stop Mongrel cluster"
+  desc "Stop app server"
   task :stop, roles => :app do
-    run "cd #{deploy_to}/current && mongrel_rails cluster::stop -C #{mongrel_conf}"
+    if fetch(:mongrel_conf, nil)
+      run "cd #{deploy_to}/current && mongrel_rails cluster::stop -C #{mongrel_conf}"
+    elsif fetch(:passenger_conf, nil)
+      # No-op
+    else
+      puts "No server configuration found, aborting deploy:stop."
+    end
   end
 
-  desc "Restart Mongrel cluster"
+  desc "Restart app server"
   task :restart, roles => :app do
     stop
     start

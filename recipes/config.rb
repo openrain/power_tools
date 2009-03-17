@@ -5,6 +5,9 @@ namespace :config do
   task :setup, :roles => [:app] do
     run "mkdir -p #{shared_path}/config"
     run "touch #{shared_path}/config/database.yml"
+    if fetch(:mongrel_conf, nil)
+      run "touch #{shared_path}/config/mongrel_cluster.yml"
+    end
   end
   after "deploy:setup", "config:setup"
   
