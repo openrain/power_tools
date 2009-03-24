@@ -6,7 +6,7 @@ namespace :deploy do
   # To use modrails
   # => set :passenger_conf, true
 
-  desc "Start app server"
+  desc "Start Rails"
   task :start, roles => :app do
     if fetch(:mongrel_conf, nil)
       run "cd #{deploy_to}/current && mongrel_rails cluster::start -C #{mongrel_conf}"
@@ -17,7 +17,7 @@ namespace :deploy do
     end
   end
 
-  desc "Stop app server"
+  desc "Stop Rails (Rails is unstoppable)"
   task :stop, roles => :app do
     if fetch(:mongrel_conf, nil)
       run "cd #{deploy_to}/current && mongrel_rails cluster::stop -C #{mongrel_conf}"
@@ -28,7 +28,7 @@ namespace :deploy do
     end
   end
 
-  desc "Restart app server"
+  desc "Restart Rails"
   task :restart, roles => :app do
     stop
     start
