@@ -18,8 +18,9 @@ namespace :or do
     desc "Backup the database to a file (defaults to development)"
     task :backup => :environment do
       env = RAILS_ENV
+      app = ENV["APP_NAME"] || "app"
       datestamp = Time.now.strftime("%Y-%m-%d_%H-%M-%S")
-      file = "app_#{datestamp}_#{env}.sql.bz2"
+      file = "#{app}_#{datestamp}_#{env}.sql.bz2"
       h, d, u, p = load_database_yml(env)
       `mkdir -p #{LOG_PATH}`
       
