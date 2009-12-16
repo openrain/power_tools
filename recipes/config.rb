@@ -7,6 +7,8 @@ namespace :config do
     run "touch #{shared_path}/config/database.yml"
     if fetch(:mongrel_conf, nil)
       run "touch #{shared_path}/config/mongrel_cluster.yml"
+    elsif fetch(:thin_conf, nil)
+      run "touch #{shared_path}/config/thin.yml"
     end
   end
   after "deploy:setup", "config:setup"
